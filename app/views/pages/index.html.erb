@@ -1,0 +1,7 @@
+<h1>Hi Mum!</h1>
+
+
+<% if active_session? %>
+<%= javascript_pack_tag 'hello_react', name: current_user.name %>
+<%= button_to "Log out", session_path(1), method: :delete %>
+<% end %>
