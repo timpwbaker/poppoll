@@ -1,7 +1,11 @@
-<h1>Hi Mum!</h1>
+<section>
+  <article class="home-headline">
+    <h1>Ask anything you want!</br>
+      <small>As long as it's multiple choice</small>
+    </h1>
+  </article>
+  <article class="home-create-poll">
+    <%= render "polls/form", poll: poll %>
+  </article>
+</section>
 
-
-<% if active_session? %>
-<%= javascript_pack_tag 'hello_react', name: current_user.name %>
-<%= button_to "Log out", session_path(1), method: :delete %>
-<% end %>

@@ -1,0 +1,10 @@
+<div class="nested-fields">
+  <section>
+  <div class="field-group optional-option-field">
+    <%= f.text_field :body, class: 'option-body-field' %>
+  </div>
+  <div class="field-group remove-option-link">
+    <%= link_to_remove_association "-", f, class: "delete-option"  %>
+  </div>
+  </section>
+</div>

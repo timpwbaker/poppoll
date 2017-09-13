@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-
   def logout
     session[:user_id] = nil
   end
@@ -10,7 +9,7 @@ class ApplicationController < ActionController::Base
     if active_session?
       User.find(session[:user_id])
     else
-      nil
+      User.guest
     end
   end
   helper_method :current_user

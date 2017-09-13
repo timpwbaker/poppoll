@@ -9,6 +9,21 @@
   </head>
 
   <body>
+    <section>
+      <nav style="width:100%">
+        <h1><%= link_to "popPOLL", root_path, class: "home" %>
+        <small>Just Ask</small></h1>
+        <ul class="right-side">
+          <% if active_session? %>
+            <li><%= link_to "Sign out", session_path(current_user.id), method: :delete %></li>
+          <% else %>
+            <li><%= link_to "Sign up", new_user_path %></li>
+            <li><%= link_to "Sign in", new_session_path %></li>
+          <% end %>
+        </ul>
+      </nav>
+    </section>
+
     <% flash.each do |key, value| %>
       <div class="alert alert-<%= key %>"><%= value %></div>
     <% end %>

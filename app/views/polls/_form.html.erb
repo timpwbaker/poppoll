@@ -1,0 +1,18 @@
+    <%= form_for poll do |form_object| %>
+      <%= form_object.hidden_field :user_id, value: current_user.id %>
+      <div class="field-group">
+        <%= form_object.label :question %>
+        <%= form_object.text_field :question %>
+      </div>
+      <label>Options</label>
+      <%= form_object.fields_for :options do |options_form| %>
+        <div class="field-group">
+          <%= options_form.text_field :body, class: 'option-body-field' %>
+        </div>
+      <% end %>
+        <div id="links" class="field-group">
+          <%= link_to_add_association 'Add option', form_object, :options,
+    partial: 'polls/option_fields', class: "add-option" %>
+        </div>
+      <%= form_object.submit "Create poll" %>
+    <% end %>

@@ -1,0 +1,39 @@
+@import "bootstrap";
+
+// Page section elements
+body { @extend .container; }
+
+section { @extend .row; }
+
+article.sign-up-form-header { @extend .col-md-6 }
+article.sign-up-form { @extend .col-md-6 }
+article.home-headline { @extend .col-md-6 }
+article.home-create-poll { @extend .col-md-6 }
+
+.optional-option-field { @extend .col-md-11 }
+.remove-option-link { @extend .col-md-1 }
+
+#links { @extend .text-right }
+
+.alert { @extend .alert }
+.alert-success { @extend .alert-success }
+.alert-danger { @extend .alert-danger }
+
+//Navigation elements
+nav { @extend .navbar; }
+nav a.home { @extend .navbar-brand }
+nav ul.right-side { @extend .nav; @extend .navbar-nav }
+
+// Interactive elements
+a.add-option { @extend .btn; @extend .btn-info }
+a.delete-option { @extend .btn; @extend .btn-danger }
+
+// Text elements
+p.strong { @extend .lead; }
+small { @extend .text-muted }
+
+// Form elements
+form input { @extend .form-control; }
+input[type="submit"] { @extend .btn; @extend .btn-success }
+div.field-group { @extend .form-group; }
+input.submit { @extend .btn; @extend .btn-primary }

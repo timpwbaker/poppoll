@@ -1,6 +1,1 @@
-<%= form_for poll do |form_object| %>
-  <%= form_object.hidden_field :user_id, value: current_user.id %>
-  <%= form_object.label :question %>
-  <%= form_object.text_field :question %>
-  <%= form_object.submit %>
-<% end %>
+<%= render "form", poll: poll %>
