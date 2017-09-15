@@ -9,6 +9,8 @@ article.sign-up-form-header { @extend .col-md-6 }
 article.sign-up-form { @extend .col-md-6 }
 article.home-headline { @extend .col-md-6 }
 article.home-create-poll { @extend .col-md-6 }
+article.poll-submission { @extend .col-md-6 }
+article.poll-results { @extend .col-md-6 }
 
 .optional-option-field { @extend .col-md-11 }
 .remove-option-link { @extend .col-md-1 }
@@ -17,7 +19,7 @@ article.home-create-poll { @extend .col-md-6 }
 
 .alert { @extend .alert }
 .alert-success { @extend .alert-success }
-.alert-danger { @extend .alert-danger }
+.alert-error { @extend .alert-danger }
 
 //Navigation elements
 nav { @extend .navbar; }

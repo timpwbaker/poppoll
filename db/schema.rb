@@ -10,16 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170914182018) do
+ActiveRecord::Schema.define(version: 20170915131226) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
 
   create_table "options", force: :cascade do |t|
     t.text "body"
     t.bigint "poll_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "vote_count", default: 0
     t.index ["poll_id"], name: "index_options_on_poll_id"
   end
 
@@ -37,6 +39,8 @@ ActiveRecord::Schema.define(version: 20170914182018) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.hstore "votes", default: {}
+    t.index ["votes"], name: "index_users_on_votes", using: :gin
   end
 
   add_foreign_key "options", "polls"

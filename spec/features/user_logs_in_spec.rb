@@ -8,7 +8,7 @@ RSpec.feature "User manages account" do
     click_link "Sign in"
     fill_in "Email", with: user.email
     fill_in "Password", with: "Password"
-    click_button "Submit"
+    click_button "Sign in"
 
     expect(page).to have_content "Successfully signed in"
   end

@@ -1,2 +1,20 @@
-<%= poll.question %>
-<%= poll.options.map(&:body).join %>
+<h2><small>Poll: </small><%= poll.question %></h2>
+<section>
+  <article class="poll-submission">
+    <% if already_voted? %>
+      <h3>You have voted in this poll</h3>
+    <% else %>
+      <% poll.options.each do |option| %>
+        <div class="field-group">
+          <%= button_to option.body, votes_path, params: { option_id: option.id } %>
+        </div>
+      <% end %>
+    <% end %>
+  </article>
+  <article class="poll-results">
+    <p><strong>Votes cast</strong></p>
+    <% poll.options.each do |option| %>
+      <h3><%= "#{option.body}" %>: <small><%= "#{option.vote_count}" %></small></h3>
+    <% end %>
+  </article>
+</section>

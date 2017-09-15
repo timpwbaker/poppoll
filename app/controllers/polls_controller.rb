@@ -8,7 +8,8 @@ class PollsController < ApplicationController
   def create
     poll = Poll.new(poll_params)
     if poll.save
-      redirect_to poll_path(poll), notice: "Poll created"
+      flash[:success] = "Poll created"
+      redirect_to poll_path(poll)
     else
       render :new, locals: { poll: poll }
     end

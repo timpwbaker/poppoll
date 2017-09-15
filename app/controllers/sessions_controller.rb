@@ -9,16 +9,20 @@ class SessionsController < ApplicationController
 
     if user && user.authenticate(session_params[:password])
       session[:user_id] = user.id
-      redirect_to '/', notice: "Successfully signed in"
+      flash[:success] = "Successfully signed in"
+      redirect_to root_path
     else
-      redirect_to new_session_path, notice: "Incorrect email or password"
+      flash[:error] = "Invalid username or password"
+      redirect_to new_session_path
     end
 
   end
 
   def destroy
     session[:user_id] = nil
-    redirect_to '/', notice: "Logged out"
+    session[:votes_cast] = nil
+    flash[:success] = "Signed out"
+    redirect_to root_path
   end
 
   private

@@ -5,6 +5,18 @@ class ApplicationController < ActionController::Base
     session[:user_id] = nil
   end
 
+  def prevent_double_voting
+    if already_voted?
+      flash[:error] = "You have already voted in this poll"
+      redirect_to poll_path(poll)
+    end
+  end
+
+  def already_voted?
+    (session[:votes_cast] && session[:votes_cast].include?(poll.id)) || current_user.voted?(poll)
+  end
+  helper_method :already_voted?
+
   def current_user
     if active_session?
       User.find(session[:user_id])
