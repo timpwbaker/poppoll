@@ -21,6 +21,11 @@ class VotesController < ApplicationController
   def register_vote
     add_vote_to_user_account
     add_vote_to_session
+    notify_client_side
+  end
+
+  def notify_client_side
+    ActionCable.server.broadcast "poll_notifications_channel", option_id: option.id.to_s, votes_cast: option.vote_count.to_s
   end
 
   def add_vote_to_user_account
