@@ -12,9 +12,10 @@
     <% end %>
   </article>
   <article class="poll-results">
+    <div id="options"></div>
     <p><strong>Votes cast</strong></p>
     <% poll.options.each do |option| %>
-      <h3><%= "#{option.body}" %>: <small><%= "#{option.vote_count}" %></small></h3>
+      <h3><%= "#{option.body}" %>: <small><span id=<%= "option_#{option.id}" %>><%= "#{option.vote_count}" %></span></small></h3>
     <% end %>
   </article>
 </section>
