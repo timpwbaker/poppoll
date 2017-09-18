@@ -8,11 +8,6 @@ jobs:
         environment:
           RAILS_ENV: test
       - image: circleci/postgres:9.4.12-alpine
-    deployment:
-      production:
-        branch: master
-        heroku:
-          appname: pop-poll
     steps:
       - checkout
 
@@ -42,3 +37,8 @@ jobs:
       - store_test_results:
           path: test_results
 
+deployment:
+  production:
+    branch: master
+    commands:
+      - git push git@heroku.com:pop-poll.git $CIRCLE_SHA1:master
