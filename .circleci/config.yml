@@ -40,5 +40,5 @@ jobs:
 deployment:
   production:
     branch: master
-    commands:
-      - git push git@heroku.com:pop-poll.git $CIRCLE_SHA1:master
+    heroku:
+      appname: pop-poll
