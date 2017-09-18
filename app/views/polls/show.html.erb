@@ -1,5 +1,7 @@
-<h2><small>Poll: </small><%= poll.question %></h2>
 <section>
+  <div class="hero">
+    <h2><%= poll.question %></h2>
+  </div>
   <article class="poll-submission">
     <% if already_voted? %>
       <h3>You have voted in this poll</h3>
