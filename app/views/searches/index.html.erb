@@ -1,0 +1,17 @@
+<section>
+  <span class="title">
+    <h2>Search Results</h2>
+  </span>
+  <div class="search-results-count">
+    <h4>
+      <%= pluralize(matching_polls.count, "Result") %> from your search "<%= params[:query] %>"
+    </h4>
+  </div>
+  <% matching_polls.each do |poll| %>
+    <article class="search-result">
+      <p><strong>Question:</strong></br>
+      <%= poll.question %></p>
+      <%= link_to "Vote", poll_path(poll), class: "blue-button" %></br>
+    </article>
+  <% end %>
+</section>

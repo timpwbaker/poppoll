@@ -8,4 +8,42 @@
     <%= render "polls/form", poll: poll %>
   </article>
 </section>
+<section id="new-polls" class="vertical-padding vertical-margin angled-background">
+  <span class="title">
+    <h2>New Polls</h2>
+  </span>
+  <% new_polls.each do |poll| %>
+    <article class="new-poll-container">
+      <article class="new-poll">
+        <h3>
+          <%= poll.question %></br>
+          <small>Options:</small>
+        </h3>
+        <div class="new-poll-options">
+          <% poll.options.first(4).each do |option| %>
+            <p><%= option.body %></p>
+          <% end %>
+        </div>
+        <span class="new-poll-vote">
+          <%= link_to "Vote", poll_path(poll), class: "blue-button form-control" %></br>
+        </span>
+      </article>
+    </article>
+  <% end %>
+</section>
+<section id="search-polls" class="vertically-padded">
+  <span class="title">
+    <h2>Search polls</h2>
+  </span>
+  <div class="home-search-form">
+    <%= form_tag searches_path, method: :get do %>
+      <div class="field-group">
+        <%= text_field_tag :query %>
+      </div>
+      <div class="field-group">
+        <%= submit_tag "Search" %>
+      </div>
+    <% end %>
+  </div>
+</section>
 

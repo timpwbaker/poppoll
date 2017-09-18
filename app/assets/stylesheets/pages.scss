@@ -1,0 +1,58 @@
+footer {
+  margin-top: 7%;
+}
+
+section {
+  padding-left: 3%;
+  padding-right: 3%;
+}
+
+section.vertical-padding {
+  padding-top: 7%;
+  padding-bottom: 10%;
+}
+
+section.vertical-margin {
+  margin: 7% 0;
+}
+
+section.angled-background {
+  -webkit-clip-path: polygon(0 0, 1600px 0, 1600px 87%, 0 100%);
+  clip-path: polygon(0 0, 1600px 10%, 1600px 87%, 0 100%);
+}
+
+section#new-polls {
+  background-color: #ccc;
+}
+
+article.footer-copy {
+  padding: 30px 3%;
+  background-color: #ccc;
+}
+
+article.search-result {
+  border-bottom: 1px solid #ccc;
+  padding-top: 3%;
+  padding-bottom: 3%;
+}
+
+span.title {
+  margin-bottom: 15px;
+}
+
+article.new-poll {
+  margin: 10px;
+  background-color: #fff;
+  border-radius:3px;
+  padding: 15px;
+  height: 100%;
+}
+
+span.new-poll-vote {
+  position: absolute;
+  bottom: 0;
+}
+
+.new-poll-options {
+  margin-bottom: 30px;
+}

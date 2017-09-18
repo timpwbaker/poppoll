@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
   resources :polls, only: [:new, :create, :show]
   resources :votes, only: [:create, :destroy]
+  resources :searches, only: [:index]
 end
