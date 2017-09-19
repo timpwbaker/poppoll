@@ -1,0 +1,54 @@
+version: 2
+jobs:
+  build:
+    parallelism: 3
+    working_directory: ~/pop-poll
+    docker:
+      - image: circleci/ruby:2.3-jessie-node-browsers
+        environment:
+          RAILS_ENV: test
+      - image: circleci/postgres:9.4.12-alpine
+    steps:
+      - checkout
+
+      # Restore bundle cache
+      - restore_cache:
+          key: rails-demo-{{ checksum "Gemfile.lock" }}
+
+      # Bundle install dependencies
+      - run: bundle install --path vendor/bundle
+
+      # Store bundle cache
+      - save_cache:
+          key: rails-demo-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+
+      # Database setup
+      - run: bundle exec rails db:create --trace
+      - run: bundle exec rails db:migrate --trace
+
+      # Run rspec in parallel
+      - type: shell
+        command: |
+          bundle exec rspec
+
+      # Save test results for timing analysis
+      - store_test_results:
+          path: test_results
+
+      - run: bash .circleci/setup-heroku.sh
+      - add_ssh_keys:
+          fingerprints: "6d:55:f3:0c:aa:70:fb:c9:07:f8:db:a8:d0:fd:2c:21"
+      - deploy:
+          name: Deploy Master to Heroku
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              git push heroku master
+            fi
+
+deployment:
+  production:
+    branch: master
+    heroku:
+      appname: pop-poll
