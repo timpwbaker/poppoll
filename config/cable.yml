@@ -1,14 +1,9 @@
-production: &default
-  adapter: postgresql
+redis: &redis
+  adapter: redis
+  url: redis://localhost:6379/1
 
-uat:
-  <<: *default
-
-qa:
-  <<: *default
-
-development:
-  <<: *default
-
-test:
-  adapter: async
+production:
+  adapter: redis
+  url: redis://redistogo:34ac1350d9245fce4ee60445a31b6a0f@tarpon.redistogo.com:10180/
+development: *redis
+test: *redis
