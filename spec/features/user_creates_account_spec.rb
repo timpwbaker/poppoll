@@ -11,4 +11,13 @@ RSpec.feature "User creates an account" do
 
     expect(page).to have_content "Account created"
   end
+
+  it "fails to create an account" do
+    visit new_user_path
+    click_button 'Submit'
+
+    expect(page).to have_content "Password can't be blank "
+    expect(page).to have_content "Name can't be blank"
+    expect(page).to have_content "Email can't be blank"
+  end
 end
